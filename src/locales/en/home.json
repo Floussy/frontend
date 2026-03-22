@@ -1,0 +1,148 @@
+{
+  "hero": {
+    "badge": "Financial management simplified",
+    "title": "Take Control of Your Finances",
+    "subtitle": "Track your income, manage expenses, and reach your financial goals with Floussy — the app built for you.",
+    "cta": "Get Started for Free",
+    "secondaryCta": "Explore Features",
+    "highlights": {
+      "secure": "Secure",
+      "fast": "Lightning fast",
+      "responsive": "Multi-device"
+    }
+  },
+  "stats": {
+    "users": { "value": "10K+", "label": "Active users" },
+    "transactions": { "value": "1M+", "label": "Transactions tracked" },
+    "countries": { "value": "15+", "label": "Countries covered" }
+  },
+  "features": {
+    "badge": "Features",
+    "title": "Everything You Need",
+    "subtitle": "Powerful tools to manage your money every day, with ease",
+    "tracking": {
+      "title": "Income & Expense Tracking",
+      "description": "Easily record and categorize all your financial transactions in real time"
+    },
+    "goals": {
+      "title": "Savings Goals",
+      "description": "Set personalized financial goals and track your progress month by month"
+    },
+    "budgets": {
+      "title": "Budget Management",
+      "description": "Create budgets by category and get smart alerts when you overspend"
+    },
+    "reports": {
+      "title": "Reports & Analytics",
+      "description": "Visualize your financial habits with detailed and interactive charts"
+    },
+    "multicurrency": {
+      "title": "Multi-Currency",
+      "description": "Manage your finances in MAD, EUR, USD, and more with automatic conversion"
+    },
+    "reminders": {
+      "title": "Smart Reminders",
+      "description": "Never miss a payment deadline again with personalized notifications"
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Three simple steps to take control of your money",
+    "step1": {
+      "title": "Create Your Account",
+      "description": "Sign up for free in seconds and set up your financial profile"
+    },
+    "step2": {
+      "title": "Add Your Transactions",
+      "description": "Record your income and expenses manually or connect your accounts"
+    },
+    "step3": {
+      "title": "Analyze & Optimize",
+      "description": "Check your reports, set goals, and improve your financial health"
+    }
+  },
+  "testimonials": {
+    "title": "What Our Users Say",
+    "subtitle": "Discover how Floussy helps thousands of people manage their money",
+    "review1": {
+      "text": "Floussy completely changed how I manage my money. The interface is intuitive and the reports are very detailed.",
+      "name": "Youssef B.",
+      "role": "Freelancer, Casablanca"
+    },
+    "review2": {
+      "text": "Finally a finance app that understands the Moroccan market. MAD tracking and multi-currency are perfect.",
+      "name": "Fatima Z.",
+      "role": "Employee, Rabat"
+    },
+    "review3": {
+      "text": "Thanks to savings goals, I managed to save for my project in 6 months. Highly recommended!",
+      "name": "Ahmed M.",
+      "role": "Entrepreneur, Marrakech"
+    }
+  },
+  "about": {
+    "badge": "Our Story",
+    "title": "About Floussy",
+    "description": "Floussy is a personal finance management app designed for employees, freelancers, and business owners in Morocco and beyond. Our mission is to make money management simple, intuitive, and accessible to everyone.",
+    "mission": {
+      "title": "Our Mission",
+      "p1": "We believe every person deserves quality financial tools, regardless of their income level. Floussy was born from this conviction — an app designed for the Moroccan and francophone market.",
+      "p2": "Our team works every day to provide you with the best possible experience, with innovative features and a polished interface.",
+      "tagline": "Your money, simplified"
+    },
+    "values": {
+      "title": "Our Values",
+      "subtitle": "The principles that guide every decision we make",
+      "simplicity": {
+        "title": "Simplicity",
+        "description": "A clean and intuitive interface, without unnecessary complexity"
+      },
+      "transparency": {
+        "title": "Transparency",
+        "description": "No hidden fees, no surprises. Your trust is our priority"
+      },
+      "accessibility": {
+        "title": "Accessibility",
+        "description": "Available in French, English, and Arabic, on all your devices"
+      },
+      "community": {
+        "title": "Community",
+        "description": "Built with and for our community of users"
+      }
+    },
+    "team": {
+      "title": "A Passionate Team",
+      "description": "We are a team of developers, designers, and financial experts based in Morocco, united by the desire to democratize personal financial management."
+    }
+  },
+  "contact": {
+    "badge": "Get in Touch",
+    "title": "Let's Talk",
+    "subtitle": "A question, a suggestion, or a partnership? We're here to listen",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "hours": "Hours",
+    "form": {
+      "heading": "Send Us a Message",
+      "description": "Fill out the form below and our team will get back to you within 24 hours.",
+      "name": "Full name",
+      "email": "Email address",
+      "subject": "Subject",
+      "message": "Your message",
+      "send": "Send Message"
+    },
+    "faq": {
+      "title": "Need Quick Help?",
+      "description": "Check out our help center to find answers to frequently asked questions about using Floussy."
+    }
+  },
+  "cta": {
+    "title": "Ready to Manage Your Money Better?",
+    "subtitle": "Join thousands of users who trust Floussy for their financial management",
+    "button": "Create a Free Account",
+    "noCreditCard": "No credit card",
+    "freeForever": "Free forever",
+    "setupMinutes": "Ready in 2 minutes"
+  }
+}

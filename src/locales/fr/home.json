@@ -1,0 +1,148 @@
+{
+  "hero": {
+    "badge": "Gestion financière simplifiée",
+    "title": "Prenez le contrôle de vos finances",
+    "subtitle": "Suivez vos revenus, gérez vos dépenses et atteignez vos objectifs financiers avec Floussy — l'application conçue pour vous.",
+    "cta": "Commencer gratuitement",
+    "secondaryCta": "Découvrir les fonctionnalités",
+    "highlights": {
+      "secure": "Sécurisé",
+      "fast": "Ultra rapide",
+      "responsive": "Multi-appareils"
+    }
+  },
+  "stats": {
+    "users": { "value": "10K+", "label": "Utilisateurs actifs" },
+    "transactions": { "value": "1M+", "label": "Transactions suivies" },
+    "countries": { "value": "15+", "label": "Pays couverts" }
+  },
+  "features": {
+    "badge": "Fonctionnalités",
+    "title": "Tout ce dont vous avez besoin",
+    "subtitle": "Des outils puissants pour gérer votre argent au quotidien, en toute simplicité",
+    "tracking": {
+      "title": "Suivi des revenus et dépenses",
+      "description": "Enregistrez et catégorisez facilement toutes vos transactions financières en temps réel"
+    },
+    "goals": {
+      "title": "Objectifs d'épargne",
+      "description": "Définissez des objectifs financiers personnalisés et suivez votre progression chaque mois"
+    },
+    "budgets": {
+      "title": "Gestion des budgets",
+      "description": "Créez des budgets par catégorie et recevez des alertes intelligentes en cas de dépassement"
+    },
+    "reports": {
+      "title": "Rapports et analyses",
+      "description": "Visualisez vos habitudes financières avec des graphiques détaillés et interactifs"
+    },
+    "multicurrency": {
+      "title": "Multi-devises",
+      "description": "Gérez vos finances en MAD, EUR, USD et d'autres devises avec conversion automatique"
+    },
+    "reminders": {
+      "title": "Rappels intelligents",
+      "description": "Ne manquez plus jamais une échéance de paiement grâce aux notifications personnalisées"
+    }
+  },
+  "howItWorks": {
+    "title": "Comment ça marche",
+    "subtitle": "Trois étapes simples pour prendre le contrôle de votre argent",
+    "step1": {
+      "title": "Créez votre compte",
+      "description": "Inscrivez-vous gratuitement en quelques secondes et configurez votre profil financier"
+    },
+    "step2": {
+      "title": "Ajoutez vos transactions",
+      "description": "Enregistrez vos revenus et dépenses manuellement ou connectez vos comptes"
+    },
+    "step3": {
+      "title": "Analysez et optimisez",
+      "description": "Consultez vos rapports, fixez des objectifs et améliorez votre santé financière"
+    }
+  },
+  "testimonials": {
+    "title": "Ce que disent nos utilisateurs",
+    "subtitle": "Découvrez comment Floussy aide des milliers de personnes à gérer leur argent",
+    "review1": {
+      "text": "Floussy a complètement changé ma façon de gérer mon argent. L'interface est intuitive et les rapports sont très détaillés.",
+      "name": "Youssef B.",
+      "role": "Freelance, Casablanca"
+    },
+    "review2": {
+      "text": "Enfin une application de finances qui comprend le marché marocain. Le suivi en MAD et la multi-devises sont parfaits.",
+      "name": "Fatima Z.",
+      "role": "Employée, Rabat"
+    },
+    "review3": {
+      "text": "Grâce aux objectifs d'épargne, j'ai réussi à économiser pour mon projet en 6 mois. Je recommande vivement !",
+      "name": "Ahmed M.",
+      "role": "Entrepreneur, Marrakech"
+    }
+  },
+  "about": {
+    "badge": "Notre histoire",
+    "title": "À propos de Floussy",
+    "description": "Floussy est une application de gestion financière personnelle conçue pour les employés, freelances et chefs d'entreprise au Maroc et au-delà. Notre mission est de rendre la gestion de l'argent simple, intuitive et accessible à tous.",
+    "mission": {
+      "title": "Notre mission",
+      "p1": "Nous croyons que chaque personne mérite des outils financiers de qualité, peu importe son niveau de revenu. Floussy est né de cette conviction — une application pensée pour le marché marocain et francophone.",
+      "p2": "Notre équipe travaille chaque jour pour vous offrir la meilleure expérience possible, avec des fonctionnalités innovantes et une interface soignée.",
+      "tagline": "Votre argent, simplifié"
+    },
+    "values": {
+      "title": "Nos valeurs",
+      "subtitle": "Les principes qui guident chaque décision que nous prenons",
+      "simplicity": {
+        "title": "Simplicité",
+        "description": "Une interface claire et intuitive, sans complexité inutile"
+      },
+      "transparency": {
+        "title": "Transparence",
+        "description": "Pas de frais cachés, pas de surprises. Votre confiance est notre priorité"
+      },
+      "accessibility": {
+        "title": "Accessibilité",
+        "description": "Disponible en français, anglais et arabe, sur tous vos appareils"
+      },
+      "community": {
+        "title": "Communauté",
+        "description": "Construite avec et pour notre communauté d'utilisateurs"
+      }
+    },
+    "team": {
+      "title": "Une équipe passionnée",
+      "description": "Nous sommes une équipe de développeurs, designers et experts financiers basés au Maroc, unis par la volonté de démocratiser la gestion financière personnelle."
+    }
+  },
+  "contact": {
+    "badge": "Contactez-nous",
+    "title": "Parlons ensemble",
+    "subtitle": "Une question, une suggestion ou un partenariat ? Nous sommes à votre écoute",
+    "email": "Email",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "hours": "Horaires",
+    "form": {
+      "heading": "Envoyez-nous un message",
+      "description": "Remplissez le formulaire ci-dessous et notre équipe vous répondra dans les 24 heures.",
+      "name": "Nom complet",
+      "email": "Adresse email",
+      "subject": "Sujet",
+      "message": "Votre message",
+      "send": "Envoyer le message"
+    },
+    "faq": {
+      "title": "Besoin d'aide rapide ?",
+      "description": "Consultez notre centre d'aide pour trouver des réponses aux questions fréquentes sur l'utilisation de Floussy."
+    }
+  },
+  "cta": {
+    "title": "Prêt à mieux gérer votre argent ?",
+    "subtitle": "Rejoignez des milliers d'utilisateurs qui font confiance à Floussy pour leur gestion financière",
+    "button": "Créer un compte gratuit",
+    "noCreditCard": "Sans carte bancaire",
+    "freeForever": "Gratuit pour toujours",
+    "setupMinutes": "Prêt en 2 minutes"
+  }
+}
