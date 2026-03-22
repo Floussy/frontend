@@ -65,7 +65,7 @@ export default function PublicFooter() {
                 component="img"
                 src={logoSvg}
                 alt={t("appName")}
-                sx={{ height: 30 }}
+                sx={{ height: 44 }}
               />
               <Typography variant="body2" color="text.secondary" sx={{ maxWidth: 280 }}>
                 {t("tagline")}

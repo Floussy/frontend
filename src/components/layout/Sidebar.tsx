@@ -70,7 +70,7 @@ export default function Sidebar() {
           component="img"
           src={logoSvg}
           alt={t("appName")}
-          sx={{ height: 28 }}
+          sx={{ height: 44 }}
         />
         {!isDesktop && (
           <IconButton onClick={() => setSidebarOpen(false)} size="small">

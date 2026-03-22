@@ -55,13 +55,13 @@ export default function PublicNavbar() {
                 component="img"
                 src={logoSvg}
                 alt={t("appName")}
-                sx={{ height: 32, display: { xs: "none", sm: "block" } }}
+                sx={{ height: 48, display: { xs: "none", sm: "block" } }}
               />
               <Box
                 component="img"
                 src={logoIconSvg}
                 alt={t("appName")}
-                sx={{ height: 28, display: { xs: "block", sm: "none" } }}
+                sx={{ height: 40, display: { xs: "block", sm: "none" } }}
               />
             </Stack>
 
@@ -159,7 +159,7 @@ export default function PublicNavbar() {
               component="img"
               src={logoSvg}
               alt={t("appName")}
-              sx={{ height: 28 }}
+              sx={{ height: 40 }}
             />
           </Stack>
           <IconButton onClick={() => setMobileOpen(false)}>
