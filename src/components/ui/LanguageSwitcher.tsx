@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { IconButton, Menu, MenuItem, ListItemText, Tooltip } from "@mui/material";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -19,6 +19,11 @@ export default function LanguageSwitcher({ color = "default" }: LanguageSwitcher
   const { i18n } = useTranslation();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
+  useEffect(() => {
+    document.documentElement.dir = isRTL(i18n.language) ? "rtl" : "ltr";
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
+
   function handleOpen(event: React.MouseEvent<HTMLElement>) {
     setAnchorEl(event.currentTarget);
   }
@@ -29,8 +34,6 @@ export default function LanguageSwitcher({ color = "default" }: LanguageSwitcher
 
   function changeLanguage(lang: string) {
     i18n.changeLanguage(lang);
-    document.documentElement.dir = isRTL(lang) ? "rtl" : "ltr";
-    document.documentElement.lang = lang;
     handleClose();
   }
 
