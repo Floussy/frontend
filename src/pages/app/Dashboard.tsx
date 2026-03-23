@@ -50,7 +50,8 @@ import { incomesApi } from "../../api/incomes";
 import { expensesApi } from "../../api/expenses";
 import type { Transaction } from "../../types/dashboard";
 import type { Category } from "../../types/transaction";
-import OnboardingTour, { useOnboardingTour } from "../../components/onboarding/OnboardingTour";
+import OnboardingTour from "../../components/onboarding/OnboardingTour";
+import { useOnboardingTour } from "../../components/onboarding/useOnboardingTour";
 
 function formatMoney(amount: number, currency: string): string {
   return new Intl.NumberFormat("fr-MA", {
