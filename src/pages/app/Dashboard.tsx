@@ -50,6 +50,7 @@ import { incomesApi } from "../../api/incomes";
 import { expensesApi } from "../../api/expenses";
 import type { Transaction } from "../../types/dashboard";
 import type { Category } from "../../types/transaction";
+import OnboardingTour, { useOnboardingTour } from "../../components/onboarding/OnboardingTour";
 
 function formatMoney(amount: number, currency: string): string {
   return new Intl.NumberFormat("fr-MA", {
@@ -62,6 +63,10 @@ function formatMoney(amount: number, currency: string): string {
 export default function Dashboard() {
   const { t } = useTranslation("dashboard");
   const { user } = useAuthStore();
+
+  // ── Onboarding tour ──
+  const isNewUser = !localStorage.getItem("floussy_tour_completed");
+  const { run: tourRun, completeTour } = useOnboardingTour(isNewUser);
 
   // ── Dashboard data ──
   const { data: dashData, isLoading, refetch } = useQuery({
@@ -251,8 +256,12 @@ export default function Dashboard() {
 
   return (
     <>
+      {/* ── Onboarding Tour ── */}
+      <OnboardingTour run={tourRun} onComplete={completeTour} />
+
       {/* ── User Header ── */}
       <Box
+        data-tour="user-header"
         sx={{
           mb: 4,
           p: { xs: 2.5, sm: 3.5 },
@@ -293,7 +302,7 @@ export default function Dashboard() {
           </Stack>
 
           {/* Quick action buttons */}
-          <Stack direction="row" spacing={1.5}>
+          <Stack direction="row" spacing={1.5} data-tour="quick-actions">
             <Button
               variant="contained"
               startIcon={<AddIcon />}
@@ -325,7 +334,7 @@ export default function Dashboard() {
       </Box>
 
       {/* ── Summary Cards ── */}
-      <Grid container spacing={2.5} sx={{ mb: 4 }}>
+      <Grid container spacing={2.5} sx={{ mb: 4 }} data-tour="summary-cards">
         {[
           {
             key: "totalIncome",
@@ -391,7 +400,7 @@ export default function Dashboard() {
       </Grid>
 
       {/* ── Chart ── */}
-      <Card sx={{ mb: 4 }}>
+      <Card sx={{ mb: 4 }} data-tour="chart">
         <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
           <Typography variant="h6" fontWeight={700} gutterBottom>
             {t("monthlyChart")}
@@ -453,7 +462,7 @@ export default function Dashboard() {
       </Card>
 
       {/* ── Transaction History with Load More ── */}
-      <Card>
+      <Card data-tour="history-table">
         <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
           <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
             {t("recentTransactions")}

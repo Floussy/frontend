@@ -8,6 +8,7 @@ import frAuth from "./locales/fr/auth.json";
 import frHome from "./locales/fr/home.json";
 import frDashboard from "./locales/fr/dashboard.json";
 import frRecurring from "./locales/fr/recurring.json";
+import frOnboarding from "./locales/fr/onboarding.json";
 
 // EN
 import enCommon from "./locales/en/common.json";
@@ -15,6 +16,7 @@ import enAuth from "./locales/en/auth.json";
 import enHome from "./locales/en/home.json";
 import enDashboard from "./locales/en/dashboard.json";
 import enRecurring from "./locales/en/recurring.json";
+import enOnboarding from "./locales/en/onboarding.json";
 
 // AR
 import arCommon from "./locales/ar/common.json";
@@ -22,6 +24,7 @@ import arAuth from "./locales/ar/auth.json";
 import arHome from "./locales/ar/home.json";
 import arDashboard from "./locales/ar/dashboard.json";
 import arRecurring from "./locales/ar/recurring.json";
+import arOnboarding from "./locales/ar/onboarding.json";
 
 const resources = {
   fr: {
@@ -30,6 +33,7 @@ const resources = {
     home: frHome,
     dashboard: frDashboard,
     recurring: frRecurring,
+    onboarding: frOnboarding,
   },
   en: {
     common: enCommon,
@@ -37,6 +41,7 @@ const resources = {
     home: enHome,
     dashboard: enDashboard,
     recurring: enRecurring,
+    onboarding: enOnboarding,
   },
   ar: {
     common: arCommon,
@@ -44,6 +49,7 @@ const resources = {
     home: arHome,
     dashboard: arDashboard,
     recurring: arRecurring,
+    onboarding: arOnboarding,
   },
 };
 
@@ -60,7 +66,7 @@ i18n
     resources,
     fallbackLng: "fr",
     defaultNS: "common",
-    ns: ["common", "auth", "home", "dashboard", "recurring"],
+    ns: ["common", "auth", "home", "dashboard", "recurring", "onboarding"],
     interpolation: {
       escapeValue: false,
     },

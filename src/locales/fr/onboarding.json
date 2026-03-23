@@ -1,0 +1,65 @@
+{
+  "welcome": {
+    "title": "Bienvenue sur Floussy ! 🎉",
+    "content": "Nous allons vous faire un tour rapide de l'application pour vous aider à gérer vos finances facilement. C'est parti !"
+  },
+  "header": {
+    "title": "Votre espace personnel",
+    "content": "Ici vous voyez votre profil, un résumé de votre mois en cours et votre solde."
+  },
+  "quickActions": {
+    "title": "Actions rapides",
+    "content": "Ajoutez un revenu ou une dépense en un seul clic. C'est le moyen le plus rapide pour enregistrer vos transactions."
+  },
+  "summaryCards": {
+    "title": "Résumé du mois",
+    "content": "Ces cartes affichent vos revenus totaux, dépenses totales et votre solde net pour le mois en cours."
+  },
+  "chart": {
+    "title": "Graphique d'évolution",
+    "content": "Visualisez l'évolution de vos revenus et dépenses sur les 6 derniers mois."
+  },
+  "history": {
+    "title": "Historique des transactions",
+    "content": "Toutes vos transactions récentes sont listées ici. Cliquez sur 'Charger plus' pour voir les anciennes."
+  },
+  "incomes": {
+    "title": "Revenus",
+    "content": "Gérez tous vos revenus : salaire, freelance, investissements... Ajoutez, modifiez ou supprimez vos entrées."
+  },
+  "expenses": {
+    "title": "Dépenses",
+    "content": "Suivez toutes vos dépenses. Vous pouvez aussi prendre une photo du reçu pour chaque dépense."
+  },
+  "recurring": {
+    "title": "Opérations fixes",
+    "content": "Configurez vos transactions récurrentes (salaire, loyer, abonnements). Elles seront automatiquement ajoutées chaque mois."
+  },
+  "goals": {
+    "title": "Objectifs d'épargne",
+    "content": "Définissez des objectifs financiers et suivez votre progression. Ex: acheter une voiture, vacances..."
+  },
+  "budgets": {
+    "title": "Budgets",
+    "content": "Créez des budgets par catégorie pour contrôler vos dépenses. Recevez des alertes quand vous approchez la limite."
+  },
+  "reports": {
+    "title": "Rapports & Analyses",
+    "content": "Consultez des rapports détaillés sur vos finances : graphiques, tendances et comparaisons."
+  },
+  "settings": {
+    "title": "Paramètres",
+    "content": "Personnalisez l'application : devise par défaut, langue, notifications et plus encore."
+  },
+  "done": {
+    "title": "Vous êtes prêt ! 🚀",
+    "content": "Vous connaissez maintenant les bases de Floussy. Commencez par ajouter vos opérations fixes (salaire, loyer) pour un suivi automatique !"
+  },
+  "controls": {
+    "back": "Retour",
+    "close": "Fermer",
+    "finish": "Terminer",
+    "next": "Suivant",
+    "skip": "Passer le tour"
+  }
+}

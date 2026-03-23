@@ -33,18 +33,18 @@ import logoSvg from "../../assets/logo.svg";
 const DRAWER_WIDTH = 250;
 
 const mainNav = [
-  { to: "/app/dashboard", icon: <DashboardIcon />, labelKey: "nav.dashboard" },
-  { to: "/app/incomes", icon: <TrendingUpIcon />, labelKey: "nav.incomes" },
-  { to: "/app/expenses", icon: <TrendingDownIcon />, labelKey: "nav.expenses" },
-  { to: "/app/recurring", icon: <RepeatIcon />, labelKey: "nav.recurring" },
-  { to: "/app/goals", icon: <FlagIcon />, labelKey: "nav.goals" },
-  { to: "/app/budgets", icon: <AccountBalanceWalletIcon />, labelKey: "nav.budgets" },
-  { to: "/app/reports", icon: <BarChartIcon />, labelKey: "nav.reports" },
+  { to: "/app/dashboard", icon: <DashboardIcon />, labelKey: "nav.dashboard", tourId: "nav-dashboard" },
+  { to: "/app/incomes", icon: <TrendingUpIcon />, labelKey: "nav.incomes", tourId: "nav-incomes" },
+  { to: "/app/expenses", icon: <TrendingDownIcon />, labelKey: "nav.expenses", tourId: "nav-expenses" },
+  { to: "/app/recurring", icon: <RepeatIcon />, labelKey: "nav.recurring", tourId: "nav-recurring" },
+  { to: "/app/goals", icon: <FlagIcon />, labelKey: "nav.goals", tourId: "nav-goals" },
+  { to: "/app/budgets", icon: <AccountBalanceWalletIcon />, labelKey: "nav.budgets", tourId: "nav-budgets" },
+  { to: "/app/reports", icon: <BarChartIcon />, labelKey: "nav.reports", tourId: "nav-reports" },
 ] as const;
 
 const bottomNav = [
-  { to: "/app/settings", icon: <SettingsIcon />, labelKey: "nav.settings" },
-  { to: "/app/profile", icon: <PersonIcon />, labelKey: "nav.profile" },
+  { to: "/app/settings", icon: <SettingsIcon />, labelKey: "nav.settings", tourId: "nav-settings" },
+  { to: "/app/profile", icon: <PersonIcon />, labelKey: "nav.profile", tourId: "nav-profile" },
 ] as const;
 
 export default function Sidebar() {
@@ -90,6 +90,7 @@ export default function Sidebar() {
               key={item.to}
               component={NavLink}
               to={item.to}
+              data-tour={item.tourId}
               onClick={() => !isDesktop && setSidebarOpen(false)}
               sx={{
                 borderRadius: 2,
@@ -137,6 +138,7 @@ export default function Sidebar() {
               key={item.to}
               component={NavLink}
               to={item.to}
+              data-tour={item.tourId}
               onClick={() => !isDesktop && setSidebarOpen(false)}
               sx={{
                 borderRadius: 2,

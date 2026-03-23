@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router";
 import { useAuthStore } from "../../store/authStore";
 import {
   Typography, Card, CardContent, Stack, TextField, Button, Alert, Divider,
 } from "@mui/material";
+import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined";
 import apiClient from "../../api/client";
 
 export default function Settings() {
   const { t } = useTranslation("common");
   const { logout } = useAuthStore();
+  const navigate = useNavigate();
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
@@ -49,6 +52,27 @@ export default function Settings() {
               {saving ? t("actions.loading") : t("actions.save")}
             </Button>
           </Stack>
+        </CardContent>
+      </Card>
+
+      <Card sx={{ border: "1px solid #EDEDED", mb: 3 }}>
+        <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
+          <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>App Tour</Typography>
+          <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+            Replay the guided tour to learn how to use all features of Floussy.
+          </Typography>
+          <Button
+            variant="outlined"
+            startIcon={<SchoolOutlinedIcon />}
+            onClick={() => {
+              localStorage.removeItem("floussy_tour_completed");
+              navigate("/app/dashboard");
+              window.location.reload();
+            }}
+            sx={{ borderColor: "#EDEDED", color: "text.primary", "&:hover": { borderColor: "#CCC", bgcolor: "#FAFAFA" } }}
+          >
+            Restart Tour
+          </Button>
         </CardContent>
       </Card>
 

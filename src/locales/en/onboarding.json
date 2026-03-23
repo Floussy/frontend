@@ -1,0 +1,65 @@
+{
+  "welcome": {
+    "title": "Welcome to Floussy! 🎉",
+    "content": "Let us give you a quick tour of the app to help you manage your finances easily. Let's go!"
+  },
+  "header": {
+    "title": "Your personal space",
+    "content": "Here you can see your profile, a summary of your current month and your balance."
+  },
+  "quickActions": {
+    "title": "Quick actions",
+    "content": "Add an income or expense with a single click. This is the fastest way to record your transactions."
+  },
+  "summaryCards": {
+    "title": "Monthly summary",
+    "content": "These cards show your total income, total expenses and net balance for the current month."
+  },
+  "chart": {
+    "title": "Trend chart",
+    "content": "Visualize how your income and expenses have evolved over the last 6 months."
+  },
+  "history": {
+    "title": "Transaction history",
+    "content": "All your recent transactions are listed here. Click 'Load more' to see older ones."
+  },
+  "incomes": {
+    "title": "Incomes",
+    "content": "Manage all your income sources: salary, freelance, investments... Add, edit or delete entries."
+  },
+  "expenses": {
+    "title": "Expenses",
+    "content": "Track all your expenses. You can also take a photo of the receipt for each expense."
+  },
+  "recurring": {
+    "title": "Fixed operations",
+    "content": "Set up recurring transactions (salary, rent, subscriptions). They will be automatically added each month."
+  },
+  "goals": {
+    "title": "Savings goals",
+    "content": "Set financial goals and track your progress. E.g.: buy a car, vacation..."
+  },
+  "budgets": {
+    "title": "Budgets",
+    "content": "Create budgets by category to control your spending. Get alerts when you approach the limit."
+  },
+  "reports": {
+    "title": "Reports & Analytics",
+    "content": "View detailed reports on your finances: charts, trends and comparisons."
+  },
+  "settings": {
+    "title": "Settings",
+    "content": "Customize the app: default currency, language, notifications and more."
+  },
+  "done": {
+    "title": "You're all set! 🚀",
+    "content": "You now know the basics of Floussy. Start by adding your fixed operations (salary, rent) for automatic tracking!"
+  },
+  "controls": {
+    "back": "Back",
+    "close": "Close",
+    "finish": "Finish",
+    "next": "Next",
+    "skip": "Skip tour"
+  }
+}
