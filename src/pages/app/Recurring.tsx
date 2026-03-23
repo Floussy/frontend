@@ -394,7 +394,7 @@ export default function Recurring() {
               startIcon={
                 saveMutation.isPending ? <CircularProgress size={18} /> : undefined
               }
-              sx={{ bgcolor: "#171717", "&:hover": { bgcolor: "#333" }, px: 4 }}
+              sx={{ bgcolor: "text.primary", "&:hover": { bgcolor: "text.secondary" }, px: 4 }}
             >
               {t("save")}
             </Button>
@@ -432,7 +432,7 @@ function RecurringCard({
       sx={{
         height: "100%",
         opacity: item.is_active ? 1 : 0.55,
-        border: "1px solid #EDEDED",
+        border: 1, borderColor: "divider",
         "&:hover": {
           borderColor: item.is_active ? color : "#EDEDED",
           boxShadow: item.is_active

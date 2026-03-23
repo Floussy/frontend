@@ -39,7 +39,7 @@ export default function Settings() {
     <>
       <Typography variant="h5" fontWeight={700} sx={{ mb: 3 }}>{t("nav.settings")}</Typography>
 
-      <Card sx={{ border: "1px solid #EDEDED", mb: 3 }}>
+      <Card sx={{ border: 1, borderColor: "divider", mb: 3 }}>
         <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
           <Typography variant="h6" fontWeight={700} sx={{ mb: 3 }}>Change Password</Typography>
           {success && <Alert severity="success" sx={{ mb: 2 }}>{success}</Alert>}
@@ -48,14 +48,14 @@ export default function Settings() {
             <TextField name="current_password" label="Current Password" type="password" required fullWidth />
             <TextField name="password" label="New Password" type="password" required fullWidth />
             <TextField name="password_confirmation" label="Confirm New Password" type="password" required fullWidth />
-            <Button type="submit" variant="contained" disabled={saving} sx={{ bgcolor: "#171717", "&:hover": { bgcolor: "#333" }, alignSelf: "flex-start", px: 4 }}>
+            <Button type="submit" variant="contained" disabled={saving} sx={{ bgcolor: "text.primary", "&:hover": { bgcolor: "text.secondary" }, alignSelf: "flex-start", px: 4 }}>
               {saving ? t("actions.loading") : t("actions.save")}
             </Button>
           </Stack>
         </CardContent>
       </Card>
 
-      <Card sx={{ border: "1px solid #EDEDED", mb: 3 }}>
+      <Card sx={{ border: 1, borderColor: "divider", mb: 3 }}>
         <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
           <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>App Tour</Typography>
           <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
@@ -69,14 +69,14 @@ export default function Settings() {
               navigate("/app/dashboard");
               window.location.reload();
             }}
-            sx={{ borderColor: "#EDEDED", color: "text.primary", "&:hover": { borderColor: "#CCC", bgcolor: "#FAFAFA" } }}
+            sx={{ borderColor: "divider", color: "text.primary", "&:hover": { borderColor: "text.disabled", bgcolor: "action.hover" } }}
           >
             Restart Tour
           </Button>
         </CardContent>
       </Card>
 
-      <Card sx={{ border: "1px solid #EDEDED" }}>
+      <Card sx={{ border: 1, borderColor: "divider" }}>
         <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
           <Typography variant="h6" fontWeight={700} color="error.main" sx={{ mb: 2 }}>Danger Zone</Typography>
           <Divider sx={{ mb: 2 }} />

@@ -18,6 +18,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
+import ThemeToggle from "../ui/ThemeToggle";
 import logoSvg from "../../assets/logo.svg";
 import logoIconSvg from "../../assets/logo-icon.svg";
 
@@ -100,6 +101,7 @@ export default function PublicNavbar() {
               alignItems="center"
               sx={{ display: { xs: "none", md: "flex" } }}
             >
+              <ThemeToggle />
               <LanguageSwitcher />
               <Button
                 component={RouterLink}
@@ -132,6 +134,7 @@ export default function PublicNavbar() {
 
             {/* Mobile actions */}
             <Box sx={{ display: { md: "none" } }}>
+              <ThemeToggle />
               <LanguageSwitcher />
             </Box>
             <IconButton

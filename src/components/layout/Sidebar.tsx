@@ -27,6 +27,7 @@ import BarChartIcon from "@mui/icons-material/BarChartOutlined";
 import RepeatIcon from "@mui/icons-material/RepeatOutlined";
 import SettingsIcon from "@mui/icons-material/SettingsOutlined";
 import PersonIcon from "@mui/icons-material/PersonOutlined";
+import FeedbackIcon from "@mui/icons-material/FeedbackOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import logoSvg from "../../assets/logo.svg";
 
@@ -43,6 +44,7 @@ const mainNav = [
 ] as const;
 
 const bottomNav = [
+  { to: "/app/feedback", icon: <FeedbackIcon />, labelKey: "nav.feedback", tourId: "nav-feedback" },
   { to: "/app/settings", icon: <SettingsIcon />, labelKey: "nav.settings", tourId: "nav-settings" },
   { to: "/app/profile", icon: <PersonIcon />, labelKey: "nav.profile", tourId: "nav-profile" },
 ] as const;
@@ -61,7 +63,7 @@ export default function Sidebar() {
         display: "flex",
         flexDirection: "column",
         height: "100%",
-        bgcolor: "#F8F8F8",
+        bgcolor: "background.default",
       }}
     >
       {/* Logo */}
@@ -79,7 +81,7 @@ export default function Sidebar() {
         )}
       </Box>
 
-      <Divider sx={{ borderColor: "#EDEDED" }} />
+      <Divider sx={{ borderColor: "divider" }} />
 
       {/* Main navigation */}
       <List sx={{ flexGrow: 1, px: 1.5, pt: 1.5 }}>
@@ -98,12 +100,13 @@ export default function Sidebar() {
                 mx: 0,
                 px: 2,
                 py: 0.9,
-                bgcolor: isActive ? "white" : "transparent",
+                bgcolor: isActive ? "background.paper" : "transparent",
                 boxShadow: isActive ? "0 1px 3px rgba(0,0,0,0.06)" : "none",
-                border: isActive ? "1px solid #EDEDED" : "1px solid transparent",
+                border: "1px solid",
+                borderColor: isActive ? "divider" : "transparent",
                 color: isActive ? "text.primary" : "text.secondary",
                 "&:hover": {
-                  bgcolor: isActive ? "white" : alpha("#000", 0.03),
+                  bgcolor: isActive ? "background.paper" : alpha("#000", 0.03),
                 },
               }}
             >
@@ -127,7 +130,7 @@ export default function Sidebar() {
         })}
       </List>
 
-      <Divider sx={{ borderColor: "#EDEDED" }} />
+      <Divider sx={{ borderColor: "divider" }} />
 
       {/* Bottom navigation */}
       <List sx={{ px: 1.5, py: 1 }}>
@@ -146,12 +149,13 @@ export default function Sidebar() {
                 mx: 0,
                 px: 2,
                 py: 0.9,
-                bgcolor: isActive ? "white" : "transparent",
+                bgcolor: isActive ? "background.paper" : "transparent",
                 boxShadow: isActive ? "0 1px 3px rgba(0,0,0,0.06)" : "none",
-                border: isActive ? "1px solid #EDEDED" : "1px solid transparent",
+                border: "1px solid",
+                borderColor: isActive ? "divider" : "transparent",
                 color: isActive ? "text.primary" : "text.secondary",
                 "&:hover": {
-                  bgcolor: isActive ? "white" : alpha("#000", 0.03),
+                  bgcolor: isActive ? "background.paper" : alpha("#000", 0.03),
                 },
               }}
             >
@@ -181,8 +185,9 @@ export default function Sidebar() {
           sx={{
             p: 1.5,
             borderRadius: 2.5,
-            bgcolor: "white",
-            border: "1px solid #EDEDED",
+            bgcolor: "background.paper",
+            border: "1px solid",
+            borderColor: "divider",
           }}
         >
           <Stack direction="row" spacing={1.5} alignItems="center">
@@ -236,7 +241,8 @@ export default function Sidebar() {
             position: "relative",
             height: "100vh",
             border: "none",
-            borderRight: "1px solid #EDEDED",
+            borderRight: 1,
+            borderColor: "divider",
           },
         }}
       >

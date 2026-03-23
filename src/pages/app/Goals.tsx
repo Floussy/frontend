@@ -71,7 +71,7 @@ export default function Goals() {
     <>
       <Stack direction={{ xs: "column", sm: "row" }} justifyContent="space-between" alignItems={{ sm: "center" }} spacing={2} sx={{ mb: 3 }}>
         <Typography variant="h5" fontWeight={700}>{t("nav.goals")}</Typography>
-        <Button variant="contained" startIcon={<AddIcon />} onClick={() => setOpen(true)} sx={{ bgcolor: "#171717", "&:hover": { bgcolor: "#333" } }}>{t("actions.add")}</Button>
+        <Button variant="contained" startIcon={<AddIcon />} onClick={() => setOpen(true)} sx={{ bgcolor: "text.primary", "&:hover": { bgcolor: "text.secondary" } }}>{t("actions.add")}</Button>
       </Stack>
 
       {isLoading ? <Stack alignItems="center" py={8}><CircularProgress /></Stack>
@@ -84,7 +84,7 @@ export default function Goals() {
         <Grid container spacing={2}>
           {goals.map(g => (
             <Grid key={g.id} size={{ xs: 12, sm: 6, lg: 4 }}>
-              <Card sx={{ height: "100%", border: "1px solid #EDEDED" }}>
+              <Card sx={{ height: "100%", border: 1, borderColor: "divider" }}>
                 <CardContent sx={{ p: 2.5 }}>
                   <Stack direction="row" justifyContent="space-between" alignItems="flex-start" sx={{ mb: 2 }}>
                     <Box>
@@ -130,7 +130,7 @@ export default function Goals() {
           </DialogContent>
           <DialogActions sx={{ px: 3, pb: 3 }}>
             <Button onClick={() => setOpen(false)} color="inherit">{t("actions.cancel")}</Button>
-            <Button type="submit" variant="contained" disabled={createGoal.isPending} sx={{ bgcolor: "#171717", "&:hover": { bgcolor: "#333" }, px: 4 }}>{t("actions.save")}</Button>
+            <Button type="submit" variant="contained" disabled={createGoal.isPending} sx={{ bgcolor: "text.primary", "&:hover": { bgcolor: "text.secondary" }, px: 4 }}>{t("actions.save")}</Button>
           </DialogActions>
         </form>
       </Dialog>
@@ -147,7 +147,7 @@ export default function Goals() {
           </DialogContent>
           <DialogActions sx={{ px: 3, pb: 3 }}>
             <Button onClick={() => setContribGoal(null)} color="inherit">{t("actions.cancel")}</Button>
-            <Button type="submit" variant="contained" disabled={contribute.isPending} sx={{ bgcolor: "#171717", "&:hover": { bgcolor: "#333" }, px: 4 }}>{t("actions.save")}</Button>
+            <Button type="submit" variant="contained" disabled={contribute.isPending} sx={{ bgcolor: "text.primary", "&:hover": { bgcolor: "text.secondary" }, px: 4 }}>{t("actions.save")}</Button>
           </DialogActions>
         </form>
       </Dialog>

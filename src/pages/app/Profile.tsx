@@ -134,7 +134,7 @@ export default function Profile() {
       <Typography variant="h5" fontWeight={700} sx={{ mb: 3 }}>{t("nav.profile")}</Typography>
 
       {/* ── User Card ── */}
-      <Card sx={{ border: "1px solid #EDEDED", mb: 2.5 }}>
+      <Card sx={{ border: 1, borderColor: "divider", mb: 2.5 }}>
         <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
           <Stack direction={{ xs: "column", sm: "row" }} spacing={3} alignItems={{ sm: "center" }} justifyContent="space-between">
             <Stack direction="row" spacing={3} alignItems="center">
@@ -155,8 +155,8 @@ export default function Profile() {
                     size="small"
                     sx={{
                       minWidth: 30, width: 30, height: 30, borderRadius: "50%",
-                      bgcolor: "white", border: "1px solid #EDEDED",
-                      "&:hover": { bgcolor: "#F8F8F8" },
+                      bgcolor: "background.paper", border: 1, borderColor: "divider",
+                      "&:hover": { bgcolor: "action.hover" },
                     }}
                   >
                     <CameraAltIcon sx={{ fontSize: 14 }} />
@@ -168,7 +168,7 @@ export default function Profile() {
                       onClick={handleDeleteAvatar}
                       sx={{
                         minWidth: 30, width: 30, height: 30, borderRadius: "50%",
-                        bgcolor: "white", border: "1px solid #EDEDED",
+                        bgcolor: "background.paper", border: 1, borderColor: "divider",
                         color: "error.main",
                         "&:hover": { bgcolor: alpha("#EB0014", 0.05) },
                       }}
@@ -199,7 +199,7 @@ export default function Profile() {
               variant="outlined"
               startIcon={<EditOutlinedIcon />}
               onClick={() => setEditOpen(true)}
-              sx={{ alignSelf: { xs: "flex-start", sm: "center" }, borderColor: "#EDEDED", color: "text.primary", "&:hover": { borderColor: "#CCC", bgcolor: "#FAFAFA" } }}
+              sx={{ alignSelf: { xs: "flex-start", sm: "center" }, borderColor: "divider", color: "text.primary", "&:hover": { borderColor: "text.disabled", bgcolor: "action.hover" } }}
             >
               {t("actions.edit")}
             </Button>
@@ -210,7 +210,7 @@ export default function Profile() {
       {/* ── User Details ── */}
       <Grid container spacing={2.5}>
         <Grid size={{ xs: 12, md: 6 }}>
-          <Card sx={{ border: "1px solid #EDEDED", height: "100%" }}>
+          <Card sx={{ border: 1, borderColor: "divider", height: "100%" }}>
             <CardContent sx={{ p: { xs: 2.5, sm: 3 } }}>
               <Typography variant="subtitle1" fontWeight={700} sx={{ mb: 1 }}>Personal Information</Typography>
               <Divider sx={{ mb: 1 }} />
@@ -226,7 +226,7 @@ export default function Profile() {
         <Grid size={{ xs: 12, md: 6 }}>
           <Stack spacing={2.5}>
             {/* Security */}
-            <Card sx={{ border: "1px solid #EDEDED" }}>
+            <Card sx={{ border: 1, borderColor: "divider" }}>
               <CardContent sx={{ p: { xs: 2.5, sm: 3 } }}>
                 <Typography variant="subtitle1" fontWeight={700} sx={{ mb: 2 }}>Security</Typography>
                 <Stack direction="row" justifyContent="space-between" alignItems="center">
@@ -241,7 +241,7 @@ export default function Profile() {
                     variant="outlined"
                     size="small"
                     onClick={() => setPwOpen(true)}
-                    sx={{ borderColor: "#EDEDED", color: "text.primary", "&:hover": { borderColor: "#CCC" } }}
+                    sx={{ borderColor: "divider", color: "text.primary", "&:hover": { borderColor: "text.disabled" } }}
                   >
                     Change
                   </Button>
@@ -312,7 +312,7 @@ export default function Profile() {
           </DialogContent>
           <DialogActions sx={{ px: 3, pb: 3 }}>
             <Button onClick={() => setEditOpen(false)} color="inherit">{t("actions.cancel")}</Button>
-            <Button type="submit" variant="contained" disabled={saving} sx={{ bgcolor: "#171717", "&:hover": { bgcolor: "#333" }, px: 4 }}>
+            <Button type="submit" variant="contained" disabled={saving} sx={{ bgcolor: "text.primary", "&:hover": { bgcolor: "text.secondary" }, px: 4 }}>
               {saving ? t("actions.loading") : t("actions.save")}
             </Button>
           </DialogActions>
@@ -339,7 +339,7 @@ export default function Profile() {
           </DialogContent>
           <DialogActions sx={{ px: 3, pb: 3 }}>
             <Button onClick={() => setPwOpen(false)} color="inherit">{t("actions.cancel")}</Button>
-            <Button type="submit" variant="contained" disabled={pwSaving} sx={{ bgcolor: "#171717", "&:hover": { bgcolor: "#333" }, px: 4 }}>
+            <Button type="submit" variant="contained" disabled={pwSaving} sx={{ bgcolor: "text.primary", "&:hover": { bgcolor: "text.secondary" }, px: 4 }}>
               {pwSaving ? t("actions.loading") : t("actions.save")}
             </Button>
           </DialogActions>

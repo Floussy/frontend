@@ -47,9 +47,17 @@
     "title": "Reports & Analytics",
     "content": "View detailed reports on your finances: charts, trends and comparisons."
   },
+  "feedback": {
+    "title": "Feedback",
+    "content": "Send us your thoughts, feature requests or bug reports. Your feedback helps us improve the app!"
+  },
   "settings": {
     "title": "Settings",
     "content": "Customize the app: default currency, language, notifications and more."
+  },
+  "mobileNav": {
+    "title": "Navigation",
+    "content": "Use the ☰ menu at the top left to navigate between pages: Incomes, Expenses, Fixed Operations, Goals, Budgets, Reports, Feedback and Settings."
   },
   "done": {
     "title": "You're all set! 🚀",

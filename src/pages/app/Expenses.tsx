@@ -90,10 +90,10 @@ export default function Expenses() {
     <>
       <Stack direction={{ xs: "column", sm: "row" }} justifyContent="space-between" alignItems={{ sm: "center" }} spacing={2} sx={{ mb: 3 }}>
         <Typography variant="h5" fontWeight={700}>{tc("nav.expenses")}</Typography>
-        <Button variant="contained" startIcon={<AddIcon />} onClick={() => { setEdit(null); setOpen(true); }} sx={{ bgcolor: "#171717", "&:hover": { bgcolor: "#333" } }}>{tc("actions.add")}</Button>
+        <Button variant="contained" startIcon={<AddIcon />} onClick={() => { setEdit(null); setOpen(true); }} sx={{ bgcolor: "text.primary", "&:hover": { bgcolor: "text.secondary" } }}>{tc("actions.add")}</Button>
       </Stack>
 
-      <Card sx={{ border: "1px solid #EDEDED" }}>
+      <Card sx={{ border: 1, borderColor: "divider" }}>
         <CardContent sx={{ p: 0 }}>
           {isLoading ? <Stack alignItems="center" py={8}><CircularProgress /></Stack>
           : items.length === 0 ? (
@@ -106,7 +106,7 @@ export default function Expenses() {
               <TableContainer>
                 <Table>
                   <TableHead>
-                    <TableRow sx={{ bgcolor: "#FAFAFA" }}>
+                    <TableRow sx={{ bgcolor: "action.hover" }}>
                       <TableCell sx={{ fontWeight: 600, fontSize: 13 }}>{t("category")}</TableCell>
                       <TableCell sx={{ fontWeight: 600, fontSize: 13, display: { xs: "none", sm: "table-cell" } }}>{t("description")}</TableCell>
                       <TableCell align="right" sx={{ fontWeight: 600, fontSize: 13 }}>{t("amount")}</TableCell>
@@ -163,7 +163,7 @@ export default function Expenses() {
           </DialogContent>
           <DialogActions sx={{ px: 3, pb: 3 }}>
             <Button onClick={() => setOpen(false)} color="inherit">{t("cancel")}</Button>
-            <Button type="submit" variant="contained" disabled={save.isPending} sx={{ bgcolor: "#171717", "&:hover": { bgcolor: "#333" }, px: 4 }}>{t("save")}</Button>
+            <Button type="submit" variant="contained" disabled={save.isPending} sx={{ bgcolor: "text.primary", "&:hover": { bgcolor: "text.secondary" }, px: 4 }}>{t("save")}</Button>
           </DialogActions>
         </form>
       </Dialog>

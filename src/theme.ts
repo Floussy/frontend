@@ -45,14 +45,17 @@ const grey = {
   900: "#1C2025",
 };
 
-export function createAppTheme(direction: "ltr" | "rtl") {
+export function createAppTheme(direction: "ltr" | "rtl", mode: "light" | "dark" = "light") {
+  const isDark = mode === "dark";
+
   return createTheme({
     direction,
     palette: {
+      mode,
       primary: {
-        main: blue[600],
-        light: blue[400],
-        dark: blue[800],
+        main: isDark ? blue[400] : blue[600],
+        light: isDark ? blue[300] : blue[400],
+        dark: isDark ? blue[600] : blue[800],
         contrastText: "#fff",
       },
       secondary: {
@@ -61,38 +64,44 @@ export function createAppTheme(direction: "ltr" | "rtl") {
         dark: "#7b1fa2",
       },
       success: {
-        main: "#1AA251",
+        main: isDark ? "#6AE79C" : "#1AA251",
         light: "#6AE79C",
         dark: "#1AA251",
       },
       warning: {
-        main: "#DEA500",
+        main: isDark ? "#FFE070" : "#DEA500",
         light: "#FFE070",
         dark: "#AB6800",
       },
       error: {
-        main: "#EB0014",
+        main: isDark ? "#FF505F" : "#EB0014",
         light: "#FF505F",
         dark: "#C70011",
       },
       neutral: {
-        main: grey[600],
-        light: grey[400],
-        dark: grey[800],
+        main: isDark ? grey[400] : grey[600],
+        light: isDark ? grey[300] : grey[400],
+        dark: isDark ? grey[600] : grey[800],
       },
       background: {
-        default: "#fff",
-        paper: "#fff",
+        default: isDark ? "#0A1929" : "#fff",
+        paper: isDark ? "#0F2744" : "#fff",
       },
       text: {
-        primary: grey[900],
-        secondary: grey[700],
+        primary: isDark ? "#E7EBF0" : grey[900],
+        secondary: isDark ? grey[400] : grey[700],
       },
-      divider: grey[200],
+      divider: isDark ? alpha(grey[500], 0.2) : grey[200],
       gradients: {
-        hero: "linear-gradient(180deg, #CEE5FD, #fff)",
-        heroText: `linear-gradient(135deg, ${blue[600]} 0%, #9c27b0 100%)`,
-        primaryButton: `linear-gradient(135deg, ${blue[500]} 0%, ${blue[700]} 100%)`,
+        hero: isDark
+          ? "linear-gradient(180deg, #0A1929, #0F2744)"
+          : "linear-gradient(180deg, #CEE5FD, #fff)",
+        heroText: isDark
+          ? `linear-gradient(135deg, ${blue[300]} 0%, #ce93d8 100%)`
+          : `linear-gradient(135deg, ${blue[600]} 0%, #9c27b0 100%)`,
+        primaryButton: isDark
+          ? `linear-gradient(135deg, ${blue[400]} 0%, ${blue[600]} 100%)`
+          : `linear-gradient(135deg, ${blue[500]} 0%, ${blue[700]} 100%)`,
       },
     },
     typography: {
@@ -148,10 +157,10 @@ export function createAppTheme(direction: "ltr" | "rtl") {
             },
           },
           outlined: {
-            borderColor: grey[300],
+            borderColor: isDark ? alpha(grey[500], 0.3) : grey[300],
             "&:hover": {
-              borderColor: blue[400],
-              backgroundColor: alpha(blue[50], 0.5),
+              borderColor: isDark ? blue[300] : blue[400],
+              backgroundColor: isDark ? alpha(blue[400], 0.08) : alpha(blue[50], 0.5),
             },
           },
         },
@@ -164,11 +173,14 @@ export function createAppTheme(direction: "ltr" | "rtl") {
         styleOverrides: {
           root: {
             borderRadius: 16,
-            borderColor: grey[200],
+            borderColor: isDark ? alpha(grey[500], 0.2) : grey[200],
+            backgroundColor: isDark ? "#0F2744" : "#fff",
             transition: "all 0.2s ease-in-out",
             "&:hover": {
-              borderColor: grey[300],
-              boxShadow: `0 4px 20px ${alpha(grey[900], 0.08)}`,
+              borderColor: isDark ? alpha(grey[400], 0.3) : grey[300],
+              boxShadow: isDark
+                ? `0 4px 20px ${alpha("#000", 0.3)}`
+                : `0 4px 20px ${alpha(grey[900], 0.08)}`,
             },
           },
         },
@@ -177,18 +189,19 @@ export function createAppTheme(direction: "ltr" | "rtl") {
         defaultProps: { elevation: 0 },
         styleOverrides: {
           root: {
-            backgroundColor: alpha("#fff", 0.8),
+            backgroundColor: isDark ? alpha("#0A1929", 0.8) : alpha("#fff", 0.8),
             backdropFilter: "blur(20px)",
-            color: grey[900],
-            borderBottom: `1px solid ${grey[200]}`,
+            color: isDark ? "#E7EBF0" : grey[900],
+            borderBottom: `1px solid ${isDark ? alpha(grey[500], 0.2) : grey[200]}`,
           },
         },
       },
       MuiDrawer: {
         styleOverrides: {
           paper: {
-            borderRight: `1px solid ${grey[200]}`,
-            borderLeft: `1px solid ${grey[200]}`,
+            backgroundColor: isDark ? "#071A2F" : "#F8F8F8",
+            borderRight: `1px solid ${isDark ? alpha(grey[500], 0.15) : grey[200]}`,
+            borderLeft: `1px solid ${isDark ? alpha(grey[500], 0.15) : grey[200]}`,
           },
         },
       },
@@ -207,11 +220,32 @@ export function createAppTheme(direction: "ltr" | "rtl") {
             marginInline: 8,
             marginBlock: 2,
             "&.Mui-selected": {
-              backgroundColor: alpha(blue[600], 0.08),
-              color: blue[600],
-              "&:hover": { backgroundColor: alpha(blue[600], 0.12) },
-              "& .MuiListItemIcon-root": { color: blue[600] },
+              backgroundColor: alpha(isDark ? blue[400] : blue[600], 0.08),
+              color: isDark ? blue[300] : blue[600],
+              "&:hover": { backgroundColor: alpha(isDark ? blue[400] : blue[600], 0.12) },
+              "& .MuiListItemIcon-root": { color: isDark ? blue[300] : blue[600] },
             },
+          },
+        },
+      },
+      MuiTableCell: {
+        styleOverrides: {
+          root: {
+            borderColor: isDark ? alpha(grey[500], 0.15) : grey[200],
+          },
+        },
+      },
+      MuiDivider: {
+        styleOverrides: {
+          root: {
+            borderColor: isDark ? alpha(grey[500], 0.15) : grey[200],
+          },
+        },
+      },
+      MuiDialog: {
+        styleOverrides: {
+          paper: {
+            backgroundColor: isDark ? "#0F2744" : "#fff",
           },
         },
       },

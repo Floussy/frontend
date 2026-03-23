@@ -61,7 +61,7 @@ export default function Budgets() {
     <>
       <Stack direction={{ xs: "column", sm: "row" }} justifyContent="space-between" alignItems={{ sm: "center" }} spacing={2} sx={{ mb: 3 }}>
         <Typography variant="h5" fontWeight={700}>{t("nav.budgets")}</Typography>
-        <Button variant="contained" startIcon={<AddIcon />} onClick={() => setOpen(true)} sx={{ bgcolor: "#171717", "&:hover": { bgcolor: "#333" } }}>{t("actions.add")}</Button>
+        <Button variant="contained" startIcon={<AddIcon />} onClick={() => setOpen(true)} sx={{ bgcolor: "text.primary", "&:hover": { bgcolor: "text.secondary" } }}>{t("actions.add")}</Button>
       </Stack>
 
       {isLoading ? <Stack alignItems="center" py={8}><CircularProgress /></Stack>
@@ -74,7 +74,7 @@ export default function Budgets() {
         <Grid container spacing={2}>
           {budgets.map(b => (
             <Grid key={b.id} size={{ xs: 12, sm: 6, lg: 4 }}>
-              <Card sx={{ border: "1px solid #EDEDED" }}>
+              <Card sx={{ border: 1, borderColor: "divider" }}>
                 <CardContent sx={{ p: 2.5 }}>
                   <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
                     <Stack direction="row" spacing={1.5} alignItems="center">
@@ -116,7 +116,7 @@ export default function Budgets() {
           </DialogContent>
           <DialogActions sx={{ px: 3, pb: 3 }}>
             <Button onClick={() => setOpen(false)} color="inherit">{t("actions.cancel")}</Button>
-            <Button type="submit" variant="contained" disabled={create.isPending} sx={{ bgcolor: "#171717", "&:hover": { bgcolor: "#333" }, px: 4 }}>{t("actions.save")}</Button>
+            <Button type="submit" variant="contained" disabled={create.isPending} sx={{ bgcolor: "text.primary", "&:hover": { bgcolor: "text.secondary" }, px: 4 }}>{t("actions.save")}</Button>
           </DialogActions>
         </form>
       </Dialog>

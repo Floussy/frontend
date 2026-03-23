@@ -1,7 +1,10 @@
+import { useMemo } from "react";
 import { Joyride, STATUS } from "react-joyride";
 import type { Step, EventData } from "react-joyride";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "@mui/material";
+import { useTheme, useMediaQuery } from "@mui/material";
+import { useAppStore } from "../../store/appStore";
+import OnboardingTooltip from "./OnboardingTooltip";
 
 export default function OnboardingTour({
   run,
@@ -12,8 +15,12 @@ export default function OnboardingTour({
 }) {
   const { t } = useTranslation("onboarding");
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
+  const isDark = theme.palette.mode === "dark";
+  const { setSidebarOpen } = useAppStore();
 
-  const steps: Step[] = [
+  // Dashboard steps — visible on all devices
+  const dashboardSteps: Step[] = [
     {
       target: "body",
       placement: "center",
@@ -51,6 +58,10 @@ export default function OnboardingTour({
       content: t("history.content"),
       placement: "top",
     },
+  ];
+
+  // Sidebar nav steps — only on desktop (sidebar is always visible)
+  const sidebarSteps: Step[] = [
     {
       target: '[data-tour="nav-incomes"]',
       title: t("incomes.title"),
@@ -88,21 +99,47 @@ export default function OnboardingTour({
       placement: "right",
     },
     {
+      target: '[data-tour="nav-feedback"]',
+      title: t("feedback.title"),
+      content: t("feedback.content"),
+      placement: "right",
+    },
+    {
       target: '[data-tour="nav-settings"]',
       title: t("settings.title"),
       content: t("settings.content"),
       placement: "right",
     },
+  ];
+
+  // On mobile, replace sidebar steps with a single centered summary
+  const mobileNavSummary: Step[] = [
     {
       target: "body",
       placement: "center",
-      title: t("done.title"),
-      content: t("done.content"),
+      title: t("mobileNav.title"),
+      content: t("mobileNav.content"),
+      skipBeacon: true,
     },
   ];
 
+  const doneStep: Step = {
+    target: "body",
+    placement: "center",
+    title: t("done.title"),
+    content: t("done.content"),
+    skipBeacon: true,
+  };
+
+  const steps = useMemo(() => {
+    const navSteps = isMobile ? mobileNavSummary : sidebarSteps;
+    return [...dashboardSteps, ...navSteps, doneStep];
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobile, t]);
+
   function handleEvent(data: EventData) {
     if (data.status === STATUS.FINISHED || data.status === STATUS.SKIPPED) {
+      setSidebarOpen(false);
       onComplete();
     }
   }
@@ -114,6 +151,7 @@ export default function OnboardingTour({
       continuous
       scrollToFirstStep
       onEvent={handleEvent}
+      tooltipComponent={OnboardingTooltip}
       locale={{
         back: t("controls.back"),
         close: t("controls.close"),
@@ -123,12 +161,13 @@ export default function OnboardingTour({
       }}
       options={{
         primaryColor: theme.palette.primary.main,
-        overlayColor: "rgba(0, 0, 0, 0.5)",
-        backgroundColor: "#fff",
+        overlayColor: isDark ? "rgba(0, 0, 0, 0.7)" : "rgba(0, 0, 0, 0.5)",
+        backgroundColor: theme.palette.background.paper,
         textColor: theme.palette.text.primary,
-        arrowColor: "#fff",
+        arrowColor: theme.palette.background.paper,
         showProgress: true,
         zIndex: 10000,
+        spotlightRadius: 8,
       }}
     />
   );

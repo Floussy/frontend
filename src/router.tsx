@@ -28,6 +28,7 @@ import Reports from "./pages/app/Reports";
 import Settings from "./pages/app/Settings";
 import Profile from "./pages/app/Profile";
 import Recurring from "./pages/app/Recurring";
+import Feedback from "./pages/app/Feedback";
 
 export const router = createBrowserRouter([
   // Public pages with navbar + footer
@@ -73,6 +74,7 @@ export const router = createBrowserRouter([
           { path: "reports", element: <Reports /> },
           { path: "settings", element: <Settings /> },
           { path: "profile", element: <Profile /> },
+          { path: "feedback", element: <Feedback /> },
         ],
       },
     ],

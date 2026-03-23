@@ -47,9 +47,17 @@
     "title": "Rapports & Analyses",
     "content": "Consultez des rapports détaillés sur vos finances : graphiques, tendances et comparaisons."
   },
+  "feedback": {
+    "title": "Feedback",
+    "content": "Envoyez-nous vos retours, suggestions ou signalements de bugs. Votre avis est précieux pour améliorer l'application !"
+  },
   "settings": {
     "title": "Paramètres",
     "content": "Personnalisez l'application : devise par défaut, langue, notifications et plus encore."
+  },
+  "mobileNav": {
+    "title": "Navigation",
+    "content": "Utilisez le menu ☰ en haut à gauche pour naviguer entre les pages : Revenus, Dépenses, Opérations fixes, Objectifs, Budgets, Rapports, Feedback et Paramètres."
   },
   "done": {
     "title": "Vous êtes prêt ! 🚀",

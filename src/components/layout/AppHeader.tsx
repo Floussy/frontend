@@ -18,6 +18,7 @@ import LogoutIcon from "@mui/icons-material/LogoutOutlined";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
+import ThemeToggle from "../ui/ThemeToggle";
 
 export default function AppHeader() {
   const { t } = useTranslation("common");
@@ -34,9 +35,10 @@ export default function AppHeader() {
       position="sticky"
       sx={{
         zIndex: (theme) => theme.zIndex.drawer - 1,
-        bgcolor: "white",
+        bgcolor: "background.paper",
         color: "text.primary",
-        borderBottom: "1px solid #EDEDED",
+        borderBottom: 1,
+        borderColor: "divider",
         backdropFilter: "none",
         boxShadow: "none",
       }}
@@ -74,6 +76,7 @@ export default function AppHeader() {
 
         {/* Right actions */}
         <Stack direction="row" spacing={0.5} alignItems="center">
+          <ThemeToggle />
           <LanguageSwitcher />
 
           <IconButton size="small" sx={{ color: "text.secondary" }}>

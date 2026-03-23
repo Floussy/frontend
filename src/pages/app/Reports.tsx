@@ -30,7 +30,7 @@ export default function Reports() {
       <Grid container spacing={2.5}>
         {/* Monthly Bar Chart */}
         <Grid size={{ xs: 12, lg: 7 }}>
-          <Card sx={{ border: "1px solid #EDEDED" }}>
+          <Card sx={{ border: 1, borderColor: "divider" }}>
             <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
               <Typography variant="subtitle1" fontWeight={700} sx={{ mb: 2 }}>{t("monthlyChart")}</Typography>
               <Box sx={{ width: "100%", height: 300 }}>
@@ -39,7 +39,7 @@ export default function Reports() {
                     <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
                     <XAxis dataKey="label" tick={{ fontSize: 12 }} />
                     <YAxis tick={{ fontSize: 12 }} />
-                    <Tooltip contentStyle={{ borderRadius: 8, border: "1px solid #EDEDED" }} />
+                    <Tooltip contentStyle={{ borderRadius: 8, border: 1, borderColor: "divider" }} />
                     <Bar dataKey="income" name={t("income")} fill="#1AA251" radius={[4, 4, 0, 0]} />
                     <Bar dataKey="expenses" name={t("expense")} fill="#EB0014" radius={[4, 4, 0, 0]} />
                   </BarChart>
@@ -51,7 +51,7 @@ export default function Reports() {
 
         {/* Expenses by Category Pie */}
         <Grid size={{ xs: 12, lg: 5 }}>
-          <Card sx={{ border: "1px solid #EDEDED" }}>
+          <Card sx={{ border: 1, borderColor: "divider" }}>
             <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
               <Typography variant="subtitle1" fontWeight={700} sx={{ mb: 2 }}>Expenses by Category</Typography>
               {byCategory.length === 0 ? (

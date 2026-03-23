@@ -5,7 +5,7 @@ import AppHeader from "./AppHeader";
 
 export default function AppLayout() {
   return (
-    <Box sx={{ display: "flex", height: "100vh", overflow: "hidden", bgcolor: "#FAFAFA" }}>
+    <Box sx={{ display: "flex", height: "100vh", overflow: "hidden", bgcolor: "action.hover" }}>
       <Sidebar />
       <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", minWidth: 0 }}>
         <AppHeader />

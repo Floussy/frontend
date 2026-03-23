@@ -445,7 +445,7 @@ export default function Home() {
               size="large"
               endIcon={<ArrowForwardIcon />}
               sx={{
-                bgcolor: "white",
+                bgcolor: "background.paper",
                 color: "primary.dark",
                 px: 5,
                 py: 1.5,
