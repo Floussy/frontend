@@ -32,11 +32,12 @@ export default function Goals() {
     queryKey: ["goals"],
     queryFn: async () => {
       const res = await apiClient.get("/goals");
-      // Response: { success, data: { data: Goal[], links, meta }, meta }
-      const outer = res.data.data;
-      if (Array.isArray(outer)) return outer as Goal[];
-      if (outer?.data && Array.isArray(outer.data)) return outer.data as Goal[];
-      return [] as Goal[];
+      const outer = res.data?.data;
+      let items: Goal[];
+      if (Array.isArray(outer)) items = outer;
+      else if (outer?.data && Array.isArray(outer.data)) items = outer.data;
+      else items = [];
+      return items.filter((g): g is Goal => g != null && g.id != null);
     },
   });
 
@@ -86,7 +87,7 @@ export default function Goals() {
         </Stack></CardContent></Card>
       ) : (
         <Grid container spacing={2}>
-          {goals.map(g => (
+          {(goals ?? []).map(g => (
             <Grid key={g.id} size={{ xs: 12, sm: 6, lg: 4 }}>
               <Card sx={{ height: "100%", border: 1, borderColor: "divider" }}>
                 <CardContent sx={{ p: 2.5 }}>
