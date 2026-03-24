@@ -30,7 +30,7 @@ export default function Budgets() {
 
   const { data: budgets, isLoading } = useQuery({
     queryKey: ["budgets"],
-    queryFn: async () => { const res = await apiClient.get("/budgets"); return res.data.data as Budget[]; },
+    queryFn: async () => { const res = await apiClient.get("/budgets"); const d = res.data.data; return (Array.isArray(d) ? d : d?.data ?? []) as Budget[]; },
   });
 
   const [open, setOpen] = useState(false);

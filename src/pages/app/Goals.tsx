@@ -32,9 +32,11 @@ export default function Goals() {
     queryKey: ["goals"],
     queryFn: async () => {
       const res = await apiClient.get("/goals");
-      // API returns paginated: { data: Goal[], meta: {...} }
-      const payload = res.data.data;
-      return (Array.isArray(payload) ? payload : payload.data ?? []) as Goal[];
+      // Response: { success, data: { data: Goal[], links, meta }, meta }
+      const outer = res.data.data;
+      if (Array.isArray(outer)) return outer as Goal[];
+      if (outer?.data && Array.isArray(outer.data)) return outer.data as Goal[];
+      return [] as Goal[];
     },
   });
 

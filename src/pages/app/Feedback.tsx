@@ -36,7 +36,8 @@ export default function Feedback() {
     queryKey: ["feedbacks"],
     queryFn: async () => {
       const res = await feedbacksApi.list();
-      return res.data.data;
+      const d = res.data.data;
+      return Array.isArray(d) ? d : d?.data ?? [];
     },
   });
 

@@ -9,10 +9,10 @@ export interface SubscriptionTemplate {
   defaultFrequency?: string;
 }
 
-/** Get real company logo URL via domain */
+/** Get real company logo URL via domain using Google's favicon service */
 export function getLogoUrl(domain: string | null, size = 64): string | null {
   if (!domain) return null;
-  return `https://logo.clearbit.com/${domain}?size=${size}`;
+  return `https://www.google.com/s2/favicons?domain=${domain}&sz=${size}`;
 }
 
 /** Find template by subscription name */

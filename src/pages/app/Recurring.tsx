@@ -57,7 +57,9 @@ export default function Recurring() {
     queryKey: ["recurring-transactions"],
     queryFn: async () => {
       const res = await recurringApi.list();
-      return res.data.data;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const d = res.data.data as any;
+      return (Array.isArray(d) ? d : d?.data ?? []) as RecurringTransaction[];
     },
   });
 
