@@ -32,7 +32,9 @@ export default function Goals() {
     queryKey: ["goals"],
     queryFn: async () => {
       const res = await apiClient.get("/goals");
-      return res.data.data as Goal[];
+      // API returns paginated: { data: Goal[], meta: {...} }
+      const payload = res.data.data;
+      return (Array.isArray(payload) ? payload : payload.data ?? []) as Goal[];
     },
   });
 
@@ -104,7 +106,7 @@ export default function Goals() {
                       <Typography variant="caption" color="text.secondary">{fmt(Number(g.current_amount), g.currency)}</Typography>
                       <Typography variant="caption" color="text.secondary">{fmt(Number(g.target_amount), g.currency)}</Typography>
                     </Stack>
-                    <LinearProgress variant="determinate" value={g.progress_percent} sx={{ height: 8, borderRadius: 4, bgcolor: "#F0F0F0", "& .MuiLinearProgress-bar": { borderRadius: 4, bgcolor: g.status === "completed" ? "#1AA251" : "#0072E5" } }} />
+                    <LinearProgress variant="determinate" value={g.progress_percent} sx={{ height: 8, borderRadius: 4, bgcolor: "action.hover", "& .MuiLinearProgress-bar": { borderRadius: 4, bgcolor: g.status === "completed" ? "#1AA251" : "#0072E5" } }} />
                     <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5, display: "block" }}>{g.progress_percent}%</Typography>
                   </Box>
 

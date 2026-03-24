@@ -15,7 +15,8 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import SearchIcon from "@mui/icons-material/Search";
 import { subscriptionsApi } from "../../api/subscriptions";
-import { subscriptionTemplates, templateCategories } from "../../data/subscriptionTemplates";
+import { subscriptionTemplates, templateCategories, getLogoUrl } from "../../data/subscriptionTemplates";
+import SubscriptionLogo from "../../components/subscriptions/SubscriptionLogo";
 import type { SubscriptionTemplate } from "../../data/subscriptionTemplates";
 import type { Subscription, SubscriptionStatus } from "../../types/subscription";
 
@@ -132,18 +133,7 @@ export default function Subscriptions() {
                 <CardContent sx={{ p: 2.5 }}>
                   <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
                     <Stack direction="row" spacing={1.5} alignItems="center" sx={{ minWidth: 0 }}>
-                      {(() => {
-                        const tpl = subscriptionTemplates.find((t) => t.name.toLowerCase() === sub.name.toLowerCase());
-                        return tpl ? (
-                          <Box sx={{ width: 36, height: 36, borderRadius: 2, bgcolor: alpha(tpl.color, 0.1), display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>
-                            {tpl.icon}
-                          </Box>
-                        ) : (
-                          <Box sx={{ width: 36, height: 36, borderRadius: 2, bgcolor: "action.hover", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>
-                            📦
-                          </Box>
-                        );
-                      })()}
+                      <SubscriptionLogo name={sub.name} size={36} />
                       <Box sx={{ minWidth: 0 }}>
                         <Typography variant="body1" fontWeight={600} noWrap>{sub.name}</Typography>
                         {sub.provider && (
@@ -254,7 +244,18 @@ export default function Subscriptions() {
                       onClick={() => { setSelectedTemplate(tpl); setPickerOpen(false); setDialogOpen(true); }}
                     >
                       <CardContent sx={{ p: 2, textAlign: "center" }}>
-                        <Box sx={{ fontSize: 28, mb: 0.5 }}>{tpl.icon}</Box>
+                        <Box sx={{ display: "flex", justifyContent: "center", mb: 0.5 }}>
+                          {tpl.domain ? (
+                            <Box
+                              component="img"
+                              src={getLogoUrl(tpl.domain, 80)!}
+                              alt={tpl.name}
+                              sx={{ width: 32, height: 32, objectFit: "contain" }}
+                              onError={(e: React.SyntheticEvent<HTMLImageElement>) => { e.currentTarget.style.display = "none"; e.currentTarget.nextElementSibling && ((e.currentTarget.nextElementSibling as HTMLElement).style.display = "flex"); }}
+                            />
+                          ) : null}
+                          <Box sx={{ fontSize: 28, display: tpl.domain ? "none" : "flex", alignItems: "center", justifyContent: "center" }}>{tpl.icon}</Box>
+                        </Box>
                         <Typography variant="body2" fontWeight={600} noWrap>{tpl.name}</Typography>
                         {tpl.defaultAmount && (
                           <Typography variant="caption" color="text.secondary">
@@ -282,9 +283,7 @@ export default function Subscriptions() {
           <DialogTitle>
             <Stack direction="row" spacing={1.5} alignItems="center">
               {selectedTemplate && (
-                <Box sx={{ width: 36, height: 36, borderRadius: 2, bgcolor: alpha(selectedTemplate.color, 0.1), display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>
-                  {selectedTemplate.icon}
-                </Box>
+                <SubscriptionLogo name={selectedTemplate.name} size={36} />
               )}
               <span>{editing ? "Edit Subscription" : selectedTemplate ? `Add ${selectedTemplate.name}` : "Add Custom Subscription"}</span>
             </Stack>
