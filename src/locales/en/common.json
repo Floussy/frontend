@@ -17,6 +17,9 @@
     "settings": "Settings",
     "profile": "Profile",
     "feedback": "Feedback",
+    "accounts": "Accounts",
+    "subscriptions": "Subscriptions",
+    "sharedBudgets": "Shared Budgets",
     "logout": "Logout"
   },
   "actions": {

@@ -28,6 +28,9 @@ import RepeatIcon from "@mui/icons-material/RepeatOutlined";
 import SettingsIcon from "@mui/icons-material/SettingsOutlined";
 import PersonIcon from "@mui/icons-material/PersonOutlined";
 import FeedbackIcon from "@mui/icons-material/FeedbackOutlined";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalanceOutlined";
+import SubscriptionsIcon from "@mui/icons-material/SubscriptionsOutlined";
+import GroupIcon from "@mui/icons-material/GroupOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import logoSvg from "../../assets/logo.svg";
 
@@ -35,11 +38,14 @@ const DRAWER_WIDTH = 250;
 
 const mainNav = [
   { to: "/app/dashboard", icon: <DashboardIcon />, labelKey: "nav.dashboard", tourId: "nav-dashboard" },
+  { to: "/app/accounts", icon: <AccountBalanceIcon />, labelKey: "nav.accounts", tourId: "nav-accounts" },
   { to: "/app/incomes", icon: <TrendingUpIcon />, labelKey: "nav.incomes", tourId: "nav-incomes" },
   { to: "/app/expenses", icon: <TrendingDownIcon />, labelKey: "nav.expenses", tourId: "nav-expenses" },
   { to: "/app/recurring", icon: <RepeatIcon />, labelKey: "nav.recurring", tourId: "nav-recurring" },
+  { to: "/app/subscriptions", icon: <SubscriptionsIcon />, labelKey: "nav.subscriptions", tourId: "nav-subscriptions" },
   { to: "/app/goals", icon: <FlagIcon />, labelKey: "nav.goals", tourId: "nav-goals" },
   { to: "/app/budgets", icon: <AccountBalanceWalletIcon />, labelKey: "nav.budgets", tourId: "nav-budgets" },
+  { to: "/app/shared-budgets", icon: <GroupIcon />, labelKey: "nav.sharedBudgets", tourId: "nav-shared-budgets" },
   { to: "/app/reports", icon: <BarChartIcon />, labelKey: "nav.reports", tourId: "nav-reports" },
 ] as const;
 

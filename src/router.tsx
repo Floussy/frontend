@@ -29,6 +29,10 @@ import Settings from "./pages/app/Settings";
 import Profile from "./pages/app/Profile";
 import Recurring from "./pages/app/Recurring";
 import Feedback from "./pages/app/Feedback";
+import Accounts from "./pages/app/Accounts";
+import Subscriptions from "./pages/app/Subscriptions";
+import SharedBudgets from "./pages/app/SharedBudgets";
+import SharedBudgetDetail from "./pages/app/SharedBudgetDetail";
 
 export const router = createBrowserRouter([
   // Public pages with navbar + footer
@@ -75,6 +79,10 @@ export const router = createBrowserRouter([
           { path: "settings", element: <Settings /> },
           { path: "profile", element: <Profile /> },
           { path: "feedback", element: <Feedback /> },
+          { path: "accounts", element: <Accounts /> },
+          { path: "subscriptions", element: <Subscriptions /> },
+          { path: "shared-budgets", element: <SharedBudgets /> },
+          { path: "shared-budgets/:id", element: <SharedBudgetDetail /> },
         ],
       },
     ],
