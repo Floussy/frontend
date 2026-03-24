@@ -13,7 +13,10 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import SearchIcon from "@mui/icons-material/Search";
 import { subscriptionsApi } from "../../api/subscriptions";
+import { subscriptionTemplates, templateCategories } from "../../data/subscriptionTemplates";
+import type { SubscriptionTemplate } from "../../data/subscriptionTemplates";
 import type { Subscription, SubscriptionStatus } from "../../types/subscription";
 
 function formatMoney(amount: number, currency: string): string {
@@ -31,7 +34,11 @@ export default function Subscriptions() {
   const qc = useQueryClient();
   const [tab, setTab] = useState<SubscriptionStatus | "all">("all");
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const [pickerSearch, setPickerSearch] = useState("");
+  const [pickerCategory, setPickerCategory] = useState("all");
   const [editing, setEditing] = useState<Subscription | null>(null);
+  const [selectedTemplate, setSelectedTemplate] = useState<SubscriptionTemplate | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -99,7 +106,7 @@ export default function Subscriptions() {
             {formatMoney(meta.monthly_total, "MAD")}/month &middot; {formatMoney(meta.annual_total, "MAD")}/year
           </Typography>
         </Box>
-        <Button variant="contained" startIcon={<AddIcon />} onClick={() => { setEditing(null); setDialogOpen(true); }}>
+        <Button variant="contained" startIcon={<AddIcon />} onClick={() => { setEditing(null); setSelectedTemplate(null); setPickerOpen(true); }}>
           Add Subscription
         </Button>
       </Stack>
@@ -124,12 +131,26 @@ export default function Subscriptions() {
               <Card sx={{ border: 1, borderColor: "divider" }}>
                 <CardContent sx={{ p: 2.5 }}>
                   <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
-                    <Box sx={{ minWidth: 0 }}>
-                      <Typography variant="body1" fontWeight={600} noWrap>{sub.name}</Typography>
-                      {sub.provider && (
-                        <Typography variant="caption" color="text.secondary">{sub.provider}</Typography>
-                      )}
-                    </Box>
+                    <Stack direction="row" spacing={1.5} alignItems="center" sx={{ minWidth: 0 }}>
+                      {(() => {
+                        const tpl = subscriptionTemplates.find((t) => t.name.toLowerCase() === sub.name.toLowerCase());
+                        return tpl ? (
+                          <Box sx={{ width: 36, height: 36, borderRadius: 2, bgcolor: alpha(tpl.color, 0.1), display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>
+                            {tpl.icon}
+                          </Box>
+                        ) : (
+                          <Box sx={{ width: 36, height: 36, borderRadius: 2, bgcolor: "action.hover", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>
+                            📦
+                          </Box>
+                        );
+                      })()}
+                      <Box sx={{ minWidth: 0 }}>
+                        <Typography variant="body1" fontWeight={600} noWrap>{sub.name}</Typography>
+                        {sub.provider && (
+                          <Typography variant="caption" color="text.secondary">{sub.provider}</Typography>
+                        )}
+                      </Box>
+                    </Stack>
                     <Chip
                       label={sub.status}
                       size="small"
@@ -181,25 +202,108 @@ export default function Subscriptions() {
         </Grid>
       )}
 
+      {/* ── Template Picker Dialog ── */}
+      <Dialog open={pickerOpen} onClose={() => setPickerOpen(false)} maxWidth="md" fullWidth slotProps={{ paper: { sx: { borderRadius: 3 } } }}>
+        <DialogTitle>
+          <Typography variant="h6" fontWeight={700}>Choose a Subscription</Typography>
+          <Typography variant="body2" color="text.secondary">Pick from popular services or create a custom one</Typography>
+        </DialogTitle>
+        <DialogContent>
+          <Stack spacing={2.5}>
+            {/* Search */}
+            <TextField
+              placeholder="Search subscriptions..."
+              value={pickerSearch}
+              onChange={(e) => setPickerSearch(e.target.value)}
+              fullWidth
+              slotProps={{ input: { startAdornment: <SearchIcon sx={{ mr: 1, color: "text.secondary" }} /> } }}
+            />
+
+            {/* Category Tabs */}
+            <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+              <Chip
+                label="All"
+                onClick={() => setPickerCategory("all")}
+                variant={pickerCategory === "all" ? "filled" : "outlined"}
+                sx={{ fontWeight: pickerCategory === "all" ? 600 : 400 }}
+              />
+              {templateCategories.map((cat) => (
+                <Chip
+                  key={cat.key}
+                  label={`${cat.icon} ${cat.label}`}
+                  onClick={() => setPickerCategory(cat.key)}
+                  variant={pickerCategory === cat.key ? "filled" : "outlined"}
+                  sx={{ fontWeight: pickerCategory === cat.key ? 600 : 400 }}
+                />
+              ))}
+            </Stack>
+
+            {/* Template Grid */}
+            <Grid container spacing={1.5}>
+              {subscriptionTemplates
+                .filter((t) => pickerCategory === "all" || t.category === pickerCategory)
+                .filter((t) => !pickerSearch || t.name.toLowerCase().includes(pickerSearch.toLowerCase()) || t.provider.toLowerCase().includes(pickerSearch.toLowerCase()))
+                .map((tpl) => (
+                  <Grid size={{ xs: 6, sm: 4, md: 3 }} key={tpl.name}>
+                    <Card
+                      sx={{
+                        border: 1, borderColor: "divider", cursor: "pointer",
+                        "&:hover": { borderColor: tpl.color, bgcolor: alpha(tpl.color, 0.03) },
+                        transition: "all 0.15s",
+                      }}
+                      onClick={() => { setSelectedTemplate(tpl); setPickerOpen(false); setDialogOpen(true); }}
+                    >
+                      <CardContent sx={{ p: 2, textAlign: "center" }}>
+                        <Box sx={{ fontSize: 28, mb: 0.5 }}>{tpl.icon}</Box>
+                        <Typography variant="body2" fontWeight={600} noWrap>{tpl.name}</Typography>
+                        {tpl.defaultAmount && (
+                          <Typography variant="caption" color="text.secondary">
+                            ~{tpl.defaultAmount} MAD/{tpl.defaultFrequency ?? "month"}
+                          </Typography>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))}
+            </Grid>
+          </Stack>
+        </DialogContent>
+        <DialogActions sx={{ px: 3, pb: 3 }}>
+          <Button onClick={() => setPickerOpen(false)} color="inherit">{t("actions.cancel")}</Button>
+          <Button variant="outlined" onClick={() => { setSelectedTemplate(null); setPickerOpen(false); setDialogOpen(true); }}>
+            Custom Subscription
+          </Button>
+        </DialogActions>
+      </Dialog>
+
       {/* ── Add/Edit Dialog ── */}
       <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)} maxWidth="sm" fullWidth slotProps={{ paper: { sx: { borderRadius: 3 } } }}>
         <form onSubmit={handleSave}>
-          <DialogTitle>{editing ? "Edit Subscription" : "Add Subscription"}</DialogTitle>
+          <DialogTitle>
+            <Stack direction="row" spacing={1.5} alignItems="center">
+              {selectedTemplate && (
+                <Box sx={{ width: 36, height: 36, borderRadius: 2, bgcolor: alpha(selectedTemplate.color, 0.1), display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>
+                  {selectedTemplate.icon}
+                </Box>
+              )}
+              <span>{editing ? "Edit Subscription" : selectedTemplate ? `Add ${selectedTemplate.name}` : "Add Custom Subscription"}</span>
+            </Stack>
+          </DialogTitle>
           <DialogContent>
             <Stack spacing={2.5} sx={{ mt: 1 }}>
               {error && <Alert severity="error">{error}</Alert>}
-              <TextField name="name" label="Name" required fullWidth defaultValue={editing?.name ?? ""} placeholder="e.g. Netflix, Gym..." />
-              <TextField name="amount" label="Amount" type="number" required fullWidth defaultValue={editing?.amount ?? ""} slotProps={{ htmlInput: { step: "0.01", min: "0.01" } }} />
+              <TextField name="name" label="Name" required fullWidth defaultValue={editing?.name ?? selectedTemplate?.name ?? ""} placeholder="e.g. Netflix, Gym..." />
+              <TextField name="amount" label="Amount (MAD)" type="number" required fullWidth defaultValue={editing?.amount ?? selectedTemplate?.defaultAmount ?? ""} slotProps={{ htmlInput: { step: "0.01", min: "0.01" } }} />
               <TextField name="currency" select label="Currency" fullWidth defaultValue={editing?.currency ?? "MAD"}>
                 {["MAD", "EUR", "USD", "GBP"].map((c) => <MenuItem key={c} value={c}>{c}</MenuItem>)}
               </TextField>
-              <TextField name="frequency" select label="Frequency" fullWidth defaultValue={editing?.frequency ?? "monthly"}>
+              <TextField name="frequency" select label="Frequency" fullWidth defaultValue={editing?.frequency ?? selectedTemplate?.defaultFrequency ?? "monthly"}>
                 <MenuItem value="daily">Daily</MenuItem>
                 <MenuItem value="weekly">Weekly</MenuItem>
                 <MenuItem value="monthly">Monthly</MenuItem>
                 <MenuItem value="yearly">Yearly</MenuItem>
               </TextField>
-              <TextField name="provider" label="Provider (optional)" fullWidth defaultValue={editing?.provider ?? ""} />
+              <TextField name="provider" label="Provider (optional)" fullWidth defaultValue={editing?.provider ?? selectedTemplate?.provider ?? ""} />
               <TextField name="billing_day" label="Billing Day (1-31)" type="number" fullWidth defaultValue={editing?.billing_day ?? ""} slotProps={{ htmlInput: { min: 1, max: 31 } }} />
               <TextField name="started_at" label="Start Date" type="date" required fullWidth defaultValue={editing?.started_at?.split("T")[0] ?? new Date().toISOString().split("T")[0]} slotProps={{ inputLabel: { shrink: true } }} />
               <TextField name="notes" label="Notes (optional)" multiline rows={2} fullWidth defaultValue={editing?.notes ?? ""} />
