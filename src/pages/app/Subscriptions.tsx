@@ -251,7 +251,7 @@ export default function Subscriptions() {
                               src={getLogoUrl(tpl.domain, 80)!}
                               alt={tpl.name}
                               sx={{ width: 32, height: 32, objectFit: "contain" }}
-                              onError={(e: React.SyntheticEvent<HTMLImageElement>) => { e.currentTarget.style.display = "none"; e.currentTarget.nextElementSibling && ((e.currentTarget.nextElementSibling as HTMLElement).style.display = "flex"); }}
+                              onError={(e: React.SyntheticEvent<HTMLImageElement>) => { e.currentTarget.style.display = "none"; if (e.currentTarget.nextElementSibling) { (e.currentTarget.nextElementSibling as HTMLElement).style.display = "flex"; } }}
                             />
                           ) : null}
                           <Box sx={{ fontSize: 28, display: tpl.domain ? "none" : "flex", alignItems: "center", justifyContent: "center" }}>{tpl.icon}</Box>
